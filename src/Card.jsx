@@ -1,37 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import './Card.css'
-import img from './assets/images/comp.jpg'
+import imgDef from './assets/images/comp.jpg'
 
-function Card({ name, date, country, gender, agreement }) {
+function Card({ title, description, author, publishedAt, urlToImage, url }) {
+  let date = new Date(publishedAt).toLocaleString().split(',')[0];
   return (
     <div className="card" >
-      <img src={img} className="card-img-top" alt="computer" />
-      <div className="card-body">
-        <h5 className="card-title">Заголовок</h5>
-        <p className="card-text">Описание</p>
+      <img src={urlToImage || imgDef} className="card-img-top" alt={title} />
+      <div className="card-body card-body2">
+        <h5 className="card-title">{title}</h5>
+        <p className="card-text">{description}</p>
       </div>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">Имя: {name}</li>
-        <li className="list-group-item">Дата рождения: {date}</li>
-        <li className="list-group-item">Страна: {country}</li>
-        <li className="list-group-item">Пол: {gender === "male" ? "мужской" : "женский"}</li>
-        <li className="list-group-item">Согласен на обработку данных: {agreement ? "да" : "нет"}</li>
+        <li className="list-group-item">Автор: {author}</li>
+        <li className="list-group-item">Дата публикации: {date}</li>
       </ul>
       <div className="card-body">
-        <a href="#" className="card-link">Ссылка</a>
-        <a href="#" className="card-link">Ссылка</a>
+        <a href={url} target="_blank" rel="noreferrer" className="card-link">Подробнее</a>
       </div>
     </div>
   )
 }
 
 Card.propTypes = {
-  name: PropTypes.string,
-  date: PropTypes.string,
-  country: PropTypes.string,
-  gender: PropTypes.string,
-  agreement: PropTypes.bool
+  title: PropTypes.string,
+  description: PropTypes.string,
+  author: PropTypes.string,
+  publishedAt: PropTypes.string,
+  url: PropTypes.string,
+  urlToImage: PropTypes.string
 };
 
 export default Card
