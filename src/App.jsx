@@ -122,7 +122,7 @@ function App() {
     <div className="container">
       <Form search={search} onChangeSearch={onChangeSearch} onKeyUpSearch={onKeyUpSearch} />
       <SortComponent sortBy={sortBy} onChangeSortBy={onChangeSortBy} />
-      <PaginationComponent pageNumber={pageNumber} pageSize={pageSize} totalResults={cards.totalResults} onBlurPageNumber={onBlurPageNumber} onBlurPageSize={onBlurPageSize} onChangePageNumber={onChangePageNumber} onChangePageSize={onChangePageSize} />
+      <PaginationComponent pageNumber={pageNumberVal} pageSize={pageSizeVal} totalResults={cards.totalResults} onBlurPageNumber={onBlurPageNumber} onBlurPageSize={onBlurPageSize} onChangePageNumber={onChangePageNumber} onChangePageSize={onChangePageSize} />
       {isLoading && <Spinner />}
       <Cards cards={cards.articles} />
     </div>
