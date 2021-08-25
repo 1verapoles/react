@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-function PaginationComponent({ pageNumber, pageSize, totalResults, onChangePageSize, onChangePageNumber, onBlurPageSize, onBlurPageNumber }) {
+function PaginationComponent({ pageNumber, pageSize, pageSizeVal, totalResults, onChangePageSize, onChangePageNumber, onBlurPageSize, onBlurPageNumber }) {
   let total
   if (totalResults) {
-    total = Math.ceil(totalResults / pageSize)
+    total = Math.ceil(totalResults / pageSizeVal)
   } else { total = '' }
 
   return (
@@ -30,6 +30,7 @@ PaginationComponent.propTypes = {
   pageNumber: PropTypes.string,
   totalResults: PropTypes.number,
   pageSize: PropTypes.string,
+  pageSizeVal: PropTypes.number,
   onChangePageSize: PropTypes.func,
   onChangePageNumber: PropTypes.func,
   onBlurPageSize: PropTypes.func,
