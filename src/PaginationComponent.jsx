@@ -30,6 +30,7 @@ PaginationComponent.propTypes = {
   pageNumber: PropTypes.string,
   totalResults: PropTypes.number,
   pageSize: PropTypes.string,
+  pageSizeVal: PropTypes.number,  
   onChangePageSize: PropTypes.func,
   onChangePageNumber: PropTypes.func,
   onBlurPageSize: PropTypes.func,
