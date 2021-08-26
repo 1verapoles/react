@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react'
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+import { FETCH_DETAIL } from "./constants";
 import Spinner from './Spinner'
+import { fetchData } from './actions'
 import './Card.css'
 import imgDef from './assets/images/comp.jpg'
-const API_KEY = "2aedd492fa3c4e97b41ac78483bc25e1"
 
 function Details() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [card, setCard] = useState({})
   const { id } = useParams()
+  const dispatch = useDispatch()
+  const API_KEY = useSelector(state => state.API_KEY)
+  const card = useSelector(state => state.card)
+  const isLoading = useSelector(state => state.isLoading)
   useEffect(() => {
     let data = localStorage.getItem(id)
-    if (data) { data = JSON.parse(data); setCard(data); return; }
-    const fetchData = (url) => {
-      setIsLoading(true)
-      fetch(url)
-        .then(response => response.json())
-        .then(json => { setCard(json.articles[0]); localStorage.setItem(id, JSON.stringify(json.articles[0])); setIsLoading(false) })
-        .catch(error => { console.log(error); setIsLoading(false) })
-    }
-    fetchData(`https://newsapi.org/v2/everything?qInTitle=${id}&apiKey=${API_KEY}`)
+    if (data) { data = JSON.parse(data); dispatch({ type: FETCH_DETAIL, payload: data }); return; }
+    dispatch(fetchData(`https://newsapi.org/v2/everything?qInTitle=${id}&apiKey=${API_KEY}`, id))
+    return () => { dispatch({ type: FETCH_DETAIL, payload: {} }); }
   }, [])
 
   const { title, description, author, publishedAt, urlToImage, url } = card
@@ -45,14 +42,5 @@ function Details() {
     </div>
   )
 }
-
-Details.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  author: PropTypes.string,
-  publishedAt: PropTypes.string,
-  url: PropTypes.string,
-  urlToImage: PropTypes.string
-};
 
 export default Details

@@ -1,7 +1,25 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchDataAll } from './actions'
+import { CHANGE_SORT_BY } from "./constants";
 
-function SortComponent({ sortBy, onChangeSortBy }) {
+function SortComponent() {
+  const dispatch = useDispatch()
+  const API_KEY = useSelector(state => state.API_KEY)
+  const pageSize = useSelector(state => state.pageSize)
+  const pageNumber = useSelector(state => state.pageNumber)
+  const sortBy = useSelector(state => state.sortBy)
+  const searchPhrase = useSelector(state => state.searchPhrase)
+
+  const onChangeSortBy = ({ target: { value } }) => {
+    if (!searchPhrase) {
+      alert("Введите поисковую фразу!")
+      return
+    } else {
+      dispatch({ type: CHANGE_SORT_BY, payload: value })
+      dispatch(fetchDataAll(`https://newsapi.org/v2/everything?q=${searchPhrase}&pageSize=${pageSize}&page=${pageNumber}&sortBy=${sortBy}&apiKey=${API_KEY}`))
+    }
+  }
   return (
     <>
       <div className="d-flex justify-content-center">Sort by:</div>
@@ -23,9 +41,5 @@ function SortComponent({ sortBy, onChangeSortBy }) {
   )
 }
 
-SortComponent.propTypes = {
-  sortBy: PropTypes.string,
-  onChangeSortBy: PropTypes.func
-};
 
 export default SortComponent
