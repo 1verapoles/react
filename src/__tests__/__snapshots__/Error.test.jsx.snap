@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Error component renders without crashing 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="error-wrapper"
+    >
+      <div
+        class="error-inner"
+      >
+        <img
+          alt="error"
+          src="[object Object]"
+        />
+        <div
+          class="error-text"
+        >
+          Sorry, smth went 
+          <br />
+           wrong((
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

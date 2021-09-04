@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Card component renders without crashing 1`] = `
+<DocumentFragment>
+  <a
+    class="card"
+    href="/details/undefined"
+  >
+    <img
+      class="card-img-top"
+      src="[object Object]"
+    />
+    <div
+      class="card-body card-body2"
+    >
+      <h5
+        class="card-title"
+      />
+      <p
+        class="card-text"
+      />
+    </div>
+    <ul
+      class="list-group list-group-flush"
+    >
+      <li
+        class="list-group-item"
+      >
+        Автор: 
+      </li>
+      <li
+        class="list-group-item"
+      >
+        Дата публикации: Invalid Date
+      </li>
+    </ul>
+  </a>
+</DocumentFragment>
+`;

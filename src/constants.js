@@ -1,0 +1,8 @@
+export const FETCH_DETAIL = "FETCH_DETAIL";
+export const IS_LOADING = "IS_LOADING";
+export const LOADED = "LOADED";
+export const FETCH_CARDS = "FETCH_CARDS";
+export const SET_SEARCH_PHRASE = "SET_SEARCH_PHRASE";
+export const CHANGE_SORT_BY = "CHANGE_SORT_BY";
+export const CHANGE_PAGE_NUMBER = "CHANGE_PAGE_NUMBER";
+export const CHANGE_PAGE_SIZE = "CHANGE_PAGE_SIZE";
