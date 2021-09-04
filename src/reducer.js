@@ -9,7 +9,7 @@ import {
     CHANGE_PAGE_SIZE
 } from "./constants";
 
-const st = {
+export const st = {
     isLoading: false,
     API_KEY: "2aedd492fa3c4e97b41ac78483bc25e1",
     cards: {},

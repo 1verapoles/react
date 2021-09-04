@@ -5,11 +5,11 @@ import { CHANGE_SORT_BY } from "./constants";
 
 function SortComponent() {
   const dispatch = useDispatch()
+  const searchPhrase = useSelector(state => state.searchPhrase)
   const API_KEY = useSelector(state => state.API_KEY)
   const pageSize = useSelector(state => state.pageSize)
   const pageNumber = useSelector(state => state.pageNumber)
   const sortBy = useSelector(state => state.sortBy)
-  const searchPhrase = useSelector(state => state.searchPhrase)
 
   const onChangeSortBy = ({ target: { value } }) => {
     if (!searchPhrase) {
@@ -29,7 +29,7 @@ function SortComponent() {
           <label className="form-check-label" htmlFor="inlineRadio1">relevancy</label>
         </div>
         <div className="form-check form-check-inline">
-          <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" checked={sortBy === "popularity"} onChange={onChangeSortBy} value="popularity" />
+          <input className="form-check-input" type="radio" name="inlineRadioOptions" data-testid="popl" id="inlineRadio2" checked={sortBy === "popularity"} onChange={onChangeSortBy} value="popularity" />
           <label className="form-check-label" htmlFor="inlineRadio2">popularity</label>
         </div>
         <div className="form-check form-check-inline">
